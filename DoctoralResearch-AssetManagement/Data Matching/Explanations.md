@@ -53,6 +53,31 @@ The file provided by CRSP contains various columns, each representing specific d
 
 - **Mapping File Format**: This process's final output file is structured as `FundId | TICKER | CUSIP`. This format represents the culmination of the mapping information derived from Morningstar.
 
+## wficn_CRSPfundno Explanation
+
+### Overview of WRDS Data Mapping
+
+- **CRSP and Thomson Reuters Mapping**: The `wficn_CRSPfundno` dataset, provided by WRDS, plays a crucial role in mapping CRSP data with Thomson Reuters information. This mapping is facilitated through a file known as MFLINKS, which effectively links about 98% of domestic equity funds in CRSP to Thomson Reuters.
+
+- **Wharton Financial Institution Center Number (WFICN)**: The mapping uses a common identifier known as the Wharton Financial Institution Center Number (WFICN) to correlate mutual fund identifiers between CRSP and Thomson Reuters.
+
+### **Importance in Mutual Fund Research**:
+
+- **Portfolio Holdings Data**: For mutual fund research, particularly for data before 2010, Thomson Reuters is a valuable source of portfolio holdings information, which might not be available in CRSP. To integrate this holdings data into your database, mapping using the WFICN, associated with `crsp_portnos` and `FundId`, is essential.
+
+### Mapping Strategies
+
+- **Direct and Indirect Mapping Options**:
+  - **Direct Mapping**: One approach is to map Thomson Reuters data to Morningstar using TICKERS and CUSIPS. However, this method can be challenging due to the inherent complexities of these variables.
+  - **Indirect Mapping via CRSP**: Alternatively, leveraging the existing mapping between CRSP and Thomson Reuters offers an indirect route to connect with Morningstar data, as Morningstar is already mapped with CRSP.
+
+### Considerations for Usage
+
+- **Relevance to Portfolio Holdings**: Adding the WFICN mapping is particularly useful if your research involves portfolio holdings. If holdings data is not a focus, this additional layer of matching may not be necessary.
+
+- **Code Usage Guidance**: In your scripts, if there is a line introducing WFICN for mapping purposes, it's crucial only for portfolio holdings analysis. If your work does not require this, you can skip this part and focus solely on the matching between CRSP and Morningstar Direct.
+
+
 
 
 
