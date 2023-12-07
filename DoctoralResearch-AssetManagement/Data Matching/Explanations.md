@@ -51,7 +51,7 @@ The file provided by CRSP contains various columns, each representing specific d
 
 ### Final Structure
 
-- **Mapping File Format**: This process's final output file is structured as `Morningstar FundId | TICKER | CUSIP`. This format represents the culmination of the mapping information derived from Morningstar.
+- **Mapping File Format**: This process's final output file is structured as `FundId | TICKER | CUSIP`. This format represents the culmination of the mapping information derived from Morningstar.
 
 
 
