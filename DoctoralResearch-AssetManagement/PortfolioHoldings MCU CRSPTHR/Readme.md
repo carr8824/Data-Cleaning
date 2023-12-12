@@ -1,1 +1,39 @@
-# Mixing Portfolio Holdings Thomson Reuters S12 and CRSP mutual funds
+# Mixing Portfolio Holdings Thomson Reuters S12 and CRSP: Most Comprehensive Up-to-Date Portfolio Holdings (MCU Holdings)
+
+## Introduction
+
+This repository is dedicated to a comprehensive methodology for mixing portfolio holdings data from Thomson Reuters S12 and CRSP. Our approach addresses the challenges faced in tracking mutual fund manager transactions due to inconsistencies and gaps in reporting frequencies and data availability, especially before 2010.
+
+## Methodology
+
+Following the guidelines set forth by Chernenko and Sunderam (2020) ([link to the article](https://www.sciencedirect.com/science/article/pii/S0304405X19301928)), we combine CRSP and Thomson Reuters S12 databases to create the most comprehensive set of mutual fund holdings. Our strategy involves:
+
+1. **Choosing the Most Recent Data**: We prefer the most recent data within a quarter, prioritizing March over February and January.
+2. **Selecting the Source with Larger Positions**: If both sources report on the same date, we choose the one with more securities.
+3. **Defaulting to Thomson Reuters**: In cases where no significant differences exist, we default to Thomson Reuters for its more robust track record.
+
+## R Code Implementation
+
+The R code in `MixingHoldings.R` is structured with specific functions to facilitate this process:
+
+- **FundData Function**: Compares fund data from CRSP (`scrsp`) and Thomson Reuters (`sstr`) for a specific quarter and year, then filters the data based on our criteria.
+- **QData Function**: Applies the FundData Function across all quarters of a specific year to obtain MCU holdings.
+
+## Datafiles and Pre-processing
+
+- **File Naming**: For efficient processing, especially post-2010, separate the portfolio holdings by year. Files from CRSP should be named `crsp_mfholdings_year` and from Thomson Reuters as `S12_year`.
+- **Parallel Processing**: Consider using parallel computing to process files independently, as the structure and transformation remain consistent for years.
+
+## Comparability and Data Matching
+
+- **MFLINKS Files**: Use MFLINKS files from WRDS to connect CRSP `crsp_portno` to Thomson Reuters `fundno` through WFICN (Wharton-Financial-Institutional-Code-Number). More details on this process can be found in my other [GitHub folder](https://github.com/carr8824/Data-Cleaning/tree/main/DoctoralResearch-AssetManagement/Data%20Matching).
+- **MonthlyPortnoMAP File**: This file is the outcome of the code that matches CRSP and Thomson Reuters using MFLINKS, connecting `crsp_portno` and `fundno`.
+
+## Note on Data Rights and Access
+
+The data used in this process is subject to property rights, and researchers must obtain it through their means, such as via [WRDS data](https://wrds-www.wharton.upenn.edu/). This repository provides the methodology and code but not the data itself.
+
+## Contact
+
+Please get in touch with me at [carr8824@gmail.com](mailto:carr8824@gmail.com) for any queries or further clarifications.
+. For more details on how to obtain a file, you can check the .[folder](https://github.com/carr8824/Data-Cleaning/tree/main/DoctoralResearch-AssetManagement/Data%20Matching).
