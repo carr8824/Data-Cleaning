@@ -36,4 +36,5 @@ The data used in this process is subject to property rights, and researchers mus
 ## Contact
 
 Please get in touch with me at [carr8824@gmail.com](mailto:carr8824@gmail.com) for any queries or further clarifications.
-. For more details on how to obtain a file, you can check the .[folder](https://github.com/carr8824/Data-Cleaning/tree/main/DoctoralResearch-AssetManagement/Data%20Matching).
+
+For more details on how to obtain a file, you can check the .[folder](https://github.com/carr8824/Data-Cleaning/tree/main/DoctoralResearch-AssetManagement/Data%20Matching).
