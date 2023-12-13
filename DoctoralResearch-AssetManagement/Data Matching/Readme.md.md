@@ -68,12 +68,12 @@ The file provided by CRSP contains various columns, each representing specific d
 ### Mapping Strategies
 
 - **Direct and Indirect Mapping Options**:
-  - **Direct Mapping**: One approach is to map Thomson Reuters data to Morningstar using TICKERS and CUSIPS. However, this method can be challenging due to the inherent complexities of these variables.
+  - **Direct Mapping**: One approach maps Thomson Reuters data to Morningstar using TICKERS and CUSIPS. However, this method can be challenging due to the inherent complexities of these variables.
   - **Indirect Mapping via CRSP**: Alternatively, leveraging the existing mapping between CRSP and Thomson Reuters offers an indirect route to connect with Morningstar data, as Morningstar is already mapped with CRSP.
 
 ### Considerations for Usage
 
-- **Relevance to Portfolio Holdings**: Adding the WFICN mapping is particularly useful if your research involves portfolio holdings. If holdings data is not a focus, this additional layer of matching may not be necessary.
+- **Relevance to Portfolio Holdings**: Adding the WFICN mapping is particularly useful if your research involves portfolio holdings. If holdings data is not a focus, this additional matching layer may not be necessary.
 
 - **Code Usage Guidance**: In your scripts, if there is a line introducing WFICN for mapping purposes, it's crucial only for portfolio holdings analysis. If your work does not require this, you can skip this part and focus solely on the matching between CRSP and Morningstar Direct.
 
