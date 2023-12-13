@@ -57,7 +57,7 @@ The file provided by CRSP contains various columns, each representing specific d
 
 ### Overview of WRDS Data Mapping
 
-- **CRSP and Thomson Reuters Mapping**: The `wficn_CRSPfundno` dataset, provided by WRDS, plays a crucial role in mapping CRSP data with Thomson Reuters information. This mapping is facilitated through a file known as MFLINKS, which effectively links about 98% of domestic equity funds in CRSP to Thomson Reuters.
+- **CRSP and Thomson Reuter's Mapping**: The `wficn_CRSPfundno` dataset, provided by WRDS, is crucial in mapping CRSP data with Thomson Reuters information. This mapping is facilitated through a file known as MFLINKS, which effectively links about 98% of domestic equity funds in CRSP to Thomson Reuters.
 
 - **Wharton Financial Institution Center Number (WFICN)**: The mapping uses a common identifier known as the Wharton Financial Institution Center Number (WFICN) to correlate mutual fund identifiers between CRSP and Thomson Reuters.
 
@@ -77,6 +77,25 @@ The file provided by CRSP contains various columns, each representing specific d
 
 - **Code Usage Guidance**: In your scripts, if there is a line introducing WFICN for mapping purposes, it's crucial only for portfolio holdings analysis. If your work does not require this, you can skip this part and focus solely on the matching between CRSP and Morningstar Direct.
 
+# Structuring Mapping Files for Extended Data at Monthly Frequency
+
+## Overview
+
+In the `MatchCRSPtoMsDandTR.R` script, we previously established a mapping between `crsp_fundno` (share class ID) and `crsp_portno` (portfolio ID) using CRSP's mapping file. Our research treats a fund as a portfolio, understanding share classes as varying investor contracts with differing fee structures, all representing portions of the same investment pool. CRSP provides crucial data on the duration for which share classes belong to specific portfolios.
+
+## MonthlyFundIdMAP.R Script
+
+- **Purpose**: The `MonthlyFundIdMAP.R` script utilizes the `ALLMAP` file, an output from the `MatchCRSPtoMsDandTR.R` script. This file structures the mapping as `crsp_fundno | ticker | ncusips | crsp_portno | FundId | wficn`, incorporating the `begdt` and `enddt` columns. These columns signify the start and end dates of a share class's association with a portfolio and a fund unit.
+
+- **Transforming Data Structure**: The script is designed to convert these starting and ending dates into actual dates when the mapping is valid. This transformation is vital for structuring the data as a panel, allowing for efficient tracking of historical information every month. By transforming the data into this format, merging additional information later from various sources like CRSP, Morningstar, or Thomson Reuters becomes more straightforward.
+
+## Outcome and Applications
+
+- **MonthlyPortnoMAP File**: The outcome of the `MonthlyFundIdMAP.R` script is the `MonthlyPortnoMAP` database. This structured dataset becomes a fundamental tracking tool for US mutual funds research, enabling seamless integration of various data types, such as returns, portfolio holdings, transactions, fees, and other fund-level measures.
+
+- **Versatility**: The `MonthlyPortnoMAP` file is versatile and can be used across different research processes, whether analyzing portfolio transactions, fees, returns, or other metrics. Its structure allows easy merging with data from CRSP, Morningstar, or Thomson Reuters and facilitates information connection across these sources.
+
+The `MonthlyFundIdMAP.R` script dramatically simplifies building a comprehensive and multifaceted database for US mutual funds research by structuring the data into a user-friendly and easily navigable format.
 
 
 
